@@ -1,0 +1,18 @@
+<!-- editPlayer.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <h1>Edit Player</h1>
+  <form action="/update-player/<%= player._id %>" method="post">
+    <input type="text" name="playerName" value="<%= player.playerName %>" placeholder="Name" required>
+    <input type="number" name="playerNumber" value="<%= player.playerNumber %>" placeholder="Number" required>
+    <input type="number" name="goalsScored" value="<%= player.goalsScored %>" placeholder="Goals" required>
+    <button type="submit">Update Player</button>
+  </form>
+  <a href="/CRUD">Back to Player List</a>
+</body>
+</html>

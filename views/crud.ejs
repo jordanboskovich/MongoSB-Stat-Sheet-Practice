@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/navbar') %>
+ 
+  <h1>Player List</h1>
+  <ul>
+    <% players.forEach((player) => { %>
+      <li>
+        <strong><%= player.playerName %></strong>
+        (Number: <%= player.playerNumber %>, Goals Scored: <%= player.goalsScored %>)
+        <a href="/edit-player/<%= player._id %>">Edit</a>
+        <a href="/delete-player/<%= player._id %>">Delete</a>
+        <a href="/add-goal/<%= player._id %>">Add Goal</a>
+      </li>
+    <% }); %>
+  </ul>
+  
+  <form action="/crud" method="get">
+  <button type="submit" name="sortBy" value="goals">Sort by Goals</button>
+</form>
+
+  <h2>Add Player</h2>
+  <form action="/create-player" method="post">
+    <input type="text" name="playerName" placeholder="Name" required>
+    <input type="number" name="playerNumber" placeholder="Number" required>
+    <input type="number" name="goalsScored" placeholder="Goals" required>
+    <button type="submit">Add Player</button>
+  </form>
+</body>
+</html>
